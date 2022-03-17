@@ -1,0 +1,30 @@
+<!--pages/find/find.wxml-->
+
+<view class="top">
+  <view class="topTitle">推荐</view>
+
+  <view class="topBox">
+    <view class="recommend1">1</view>
+    <view class="recommend0">
+      <view class="recommend2">2</view>
+      <view class="recommend3">3</view>
+    </view>
+  </view>
+
+</view>
+
+
+<view class="bottom">
+  <view class="bottomTitle">更多</view>
+  <view class="classification">
+    <view>积极</view>
+    <view>中立</view>
+    <view>消极</view>
+  </view>
+  <view class="article">
+    <view class="pic">
+      <image></image>
+    </view>
+    <view class="articleTitle">如何调节心情</view>
+  </view>
+</view>

@@ -1,0 +1,196 @@
+/* pages/mine/mine.wxss */
+
+/* page{
+  background-color: #dbdbdb;
+  height: 100%;
+} */
+
+.top{
+  position: absolute;
+  display: block;
+
+  width: 100%;
+  height: 40%;
+
+  background-color: #FFFFFF;
+}
+
+.bg{
+  position: absolute;
+  display: block;
+
+  width: 100%;
+  height: 80%;
+
+  background-color: rgb(200, 226, 255);
+}
+
+.head{
+  position: absolute;
+  display: block;
+
+  width: 160rpx;
+  height: 160rpx;
+
+  left: 8%;
+  bottom: 0;
+
+  border-radius: 25rpx;
+  /* background-color: rgb(108, 172, 255); */
+}
+
+.head image{
+  width: 100%;
+  height: 100%;
+
+  border-radius: 25rpx;
+}
+
+.name{
+  position: absolute;
+  display: flex;
+
+  width: 220rpx;
+  height: 20%;
+
+  top: 80%;
+  left: 36%;
+
+  /* background-color: #fff; */
+
+  z-index: 2;
+  text-align: center;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.modify{
+  position: absolute;
+  display: flex;
+
+  width: 15%;
+  height: 12%;
+  
+  top: 83%;
+  right: 10%;
+
+
+  background-color: #fff;
+  border-radius: 20rpx;
+  border: solid;
+  border-width: 5rpx;
+  border-color: #00AAFF;
+  color: #00AAFF;
+
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.lists{
+  position: absolute;
+  display: block;
+
+  width: 100%;
+  height: 30%;
+
+  top: 45%;
+  /* background-color: rgb(255, 123, 123); */
+}
+
+.divLineAll{
+  position: relative;
+  display: block;
+
+  width: 100%;
+  height: 1rpx;
+
+  background-color: #dbdbdb;
+}
+
+.divLine{
+  position: relative;
+
+  width: 80%;
+  height: 1rpx;
+
+  left: 10%;
+
+  background-color: #dbdbdb;
+}
+
+.list{
+  display: flex;
+
+  width: 100%;
+  height: 25%;
+
+  background-color: #FFFFFF;
+}
+
+.func{
+  position: relative;
+  display: flex;
+
+  width: 40%;
+
+  left: 10%;
+
+  /* background-color: #fff; */
+  align-items: center;
+}
+
+.in{
+  position: relative;
+  display: flex;
+
+  width: 20%;
+  /* width: 40rpx;
+  height: 40rpx; */
+
+  left: 30%;
+  /* background-color: #fff; */
+  align-items: center;
+}
+
+.in image{
+  position: absolute;
+
+  width: 50rpx;
+  height: 50rpx;
+
+  right: 0;
+}
+
+.bottom{
+  position: absolute;
+  display: flex;
+
+  width: 100%;
+  height: 8%;
+
+  bottom: 0;
+
+  background-color: #FFFFFF;
+  vertical-align: center;
+}
+
+.bottom view{
+  position: relative;
+  display: flex;
+
+  width: 60%;
+  height: 80%;
+
+  left: 20%;
+  top: 10%;
+
+  background-color: #00AAFF;
+  border-radius: 16rpx;
+
+  color: #FFFFFF;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+}

@@ -1,0 +1,64 @@
+<view class="top">
+  <view class="topButton bechosen">
+   <view class="topTitle">手动操作</view>
+  </view>
+  <view class="topButton">
+    <view class="topTitle">实时扫描</view>
+  </view>
+</view>
+
+<view class="center neutral">
+<view class="center1">
+  <view class="front">
+    <image src="/images/icons/front.png"></image>
+  </view>
+  <view class="expressions">
+    <view>neutral</view>
+    <image src="/images/expressions/neutral.png"></image>
+  </view>
+  <view class="next">
+    <image src="/images/icons/next.png"></image>
+  </view>
+</view>
+
+
+<view class="center2">
+  <view class="listText">时间：</view>
+  <view class="contain"></view>
+  <view class="choose">
+    <image src="/images/icons/next.png"></image>
+  </view>
+  <view class="divLine"></view>
+</view>
+
+
+<view class="center3">
+  <view class="listText">标签：</view>
+  <view class="contain"></view>
+  <view class="choose">
+    <image src="/images/icons/next.png"></image>
+  </view>
+  <view class="divLine"></view>
+</view>
+
+
+<view class="center4">
+  <view class="c4Box">
+    <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述"></textarea>
+  </view>
+</view>
+
+</view>
+
+<view class="bottom">
+  <view class="bottomBox1">  
+    <view class="bottomBox2 save">  
+      <view class="bottomButton">保存</view>
+    </view>
+  </view>
+  <view class="bottomBox1">
+    <view class="bottomBox2 cancel">  
+      <view class="bottomButton">取消</view>
+    </view>
+  </view>
+</view>

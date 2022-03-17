@@ -1,0 +1,39 @@
+
+<view class="top">
+  <view class="bg"></view>
+  <view class="head"><image src="{{pic}}"></image></view>
+  <view class="name">{{name}}</view>
+  <view class="modify">编辑</view>
+</view>
+
+
+<view class="lists">
+  <view class="divLineAll"></view>
+  <view class="list">
+    <view class="func">收藏</view>
+    <view class="in">
+      <image src="/images/icons/next.png"></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="list">
+    <view class="func">浏览历史</view>
+    <view class="in">
+      <image src="/images/icons/next.png"></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="list">
+    <view class="func">联系我们</view>
+    <view class="in">
+      <image src="/images/icons/next.png"></image>
+    </view>
+  </view>
+  <view class="divLineAll"></view>
+</view>
+
+
+<view class="bottom">
+  <view>退出登录</view>
+</view>
+

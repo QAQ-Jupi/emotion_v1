@@ -1,0 +1,327 @@
+/* pages/add/add.wxss */
+
+.top{
+  display: flex;
+  position: absolute;
+
+  width: 100%;
+  height: 8%;
+
+  top:0;
+
+  background-color: rgb(255, 255, 255);
+  z-index: 99;
+}
+
+.topButton{
+  display: flex;
+
+  width: 50%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.topTitle{
+  position: absolute;
+  display: flex;
+}
+
+.bechosen{
+  background-color: #00AAFF;
+  color: #fff;
+}
+
+.center{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.center1{
+  display: flex;
+  position: absolute;
+  
+  width: 100%;
+  height: 42%;
+
+  top:8%;
+
+}
+
+.neutral{
+  background-color: #ecf9ff;
+}
+.positive{
+  background-color: #ffece3;
+}
+.negative{
+  background-color: #edf3f5;
+}
+
+.expressions{
+  position: absolute;
+  display: flex;
+
+  width: 76%;
+  height: 100%;
+
+  left: 12%;
+
+  /* background-color: rgb(46, 130, 179); */
+
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.expressions view{
+  position: absolute;
+  display: flex;
+
+  /* width: 100%; */
+  height: 100rpx;
+
+  /* background-color: #fff; */
+  align-items: center;
+  font-size: large;
+}
+
+.expressions image{
+  /* width: 100%; */
+  position: absolute;
+
+  width: 300rpx;
+  height: 300rpx;
+
+  bottom: 50rpx;
+}
+
+.front{
+  position: absolute;
+  display: flex;
+
+  width: 12%;
+  height: 100%;
+
+  left: 0%;
+
+  /* background-color: #fff; */
+  align-items: center;
+}
+
+.front image{
+  position: absolute;
+
+  width: 50rpx;
+  height: 50rpx;
+
+  right: 20rpx;
+}
+
+.next{
+  position: absolute;
+  display: flex;
+
+  width: 12%;
+  height: 100%;
+
+  right: 0%;
+
+  /* background-color: #fff; */
+  align-items: center;
+}
+
+.next image{
+  position: absolute;
+
+  width: 50rpx;
+  height: 50rpx;
+
+  right: 30rpx;
+}
+
+
+.center2{
+  display: flex;
+  position: absolute;
+  
+  width: 100%;
+  height: 8%;
+
+  top:50%;
+
+  /* background-color: rgb(255, 70, 70); */
+}
+
+.listText{
+  position: absolute;
+  display: flex;
+
+  width: 15%;
+  height: 100%;
+  left: 5%;
+
+  /* background-color: #fff; */
+
+  align-items: center;
+  justify-content: center;
+}
+
+.contain{
+  position: absolute;
+  display: flex;
+
+  width: 65%;
+  height: 100%;
+  left: 20%;
+
+  /* background-color: rgb(48, 34, 87); */
+
+  align-items: center;
+}
+
+.choose{
+  position: absolute;
+  display: flex;
+
+  width: 15%;
+  height: 100%;
+
+  right: 0%;
+
+  /* background-color: #fff; */
+  align-items: center;
+}
+
+.choose image{
+  position: absolute;
+
+  width: 50rpx;
+  height: 50rpx;
+
+  right: 20rpx;
+}
+
+.divLine{
+  position: absolute;
+
+  width: 90%;
+  height: 1rpx;
+
+  left: 5%;
+  bottom: 0;
+
+  background-color: #dbdbdb;
+}
+
+.center3{
+  display: flex;
+  position: absolute;
+  
+  width: 100%;
+  height: 8%;
+
+  top:58%;
+
+  /* background-color: rgb(255, 142, 142); */
+}
+
+.center4{
+  display: flex;
+  position: absolute;
+  
+  width: 100%;
+  height: 26%;
+
+  top:66%;
+
+  /* background-color: rgb(255, 190, 190); */
+}
+
+.c4Box{
+  position: absolute;
+  display: flex;
+
+  width: 90%;
+  height: 90%;
+
+  left: 5%;
+  top: 10%;
+
+  /* background-color: rgb(255, 228, 228); */
+}
+
+.c4Box textarea{
+  position: absolute;
+
+  height: 100%;
+  width: 100%;
+}
+
+.bottom{
+  display: flex;
+  position: absolute;
+
+  width: 100%;
+  height: 8%;
+
+  bottom: 0;
+
+  background-color: rgb(255, 255, 255);
+  z-index: 99;
+}
+
+.bottomBox1{
+  display: flex;
+  position: relative;
+
+  width: 50%;
+  height: 60%;
+
+  top:12%;
+  /* background-color: #fff; */
+}
+
+.bottomBox2{
+  display: flex;
+  position: relative;
+
+  width: 70%;
+  height: 100%;
+
+  left: 15%;
+
+  background-color: #00AAFF;
+
+  border-radius: 20rpx;
+  align-items: center;
+  vertical-align: center;
+}
+
+.bottomButton{
+  display: flex;
+
+  width: 100%;
+
+  text-align: center;
+  justify-content: center;
+
+  /* background-color: rgb(158, 101, 101); */
+}
+
+.save{
+  color: #FFFFFF;
+  background-color: #00AAFF;
+  border: solid;
+  border-width: 6rpx;
+  border-color: #00AAFF;
+}
+
+.cancel{
+  color: #00AAFF;
+  background-color: #FFFFFF;
+  border: solid;
+  border-width: 6rpx;
+  border-color: #00AAFF;
+}

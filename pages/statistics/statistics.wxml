@@ -1,0 +1,23 @@
+<!--pages/statistics/statistics.wxml-->
+
+<view class="times">
+  <view class="box">
+    <view class="title">累计记录</view>
+    <view class="num">102次</view>
+  </view>
+  <view class="box">
+    <view class="title">今日记录</view>
+    <view class="num">102次</view>
+  </view>
+</view>
+
+<view class="chart">
+  <view class="bar">
+    <view class="leftRadius">日</view>
+    <view class="borderAll">周</view>
+    <view class="borderAll">月</view>
+    <view class="rightRadius borderAll">年</view>
+  </view>
+  <view class="time">2018-12-23</view>
+  <view></view>
+</view>

@@ -1,0 +1,33 @@
+/* pages/cover/cover.wxss */
+.bg{
+  position: fixed;
+  height: 100%;
+  width: 750rpx;
+  z-index: -1;
+}
+
+.title{
+  position: absolute;
+  bottom: 40%;
+  width: 750rpx;
+  height: 50%;
+}
+
+.toLogin{
+  position: absolute;
+  top:70%;
+  left:200rpx;
+
+  width: 350rpx;
+  height: 7%;
+  border-radius: 30rpx;
+
+  background: #8bd8ff;
+  color: rgb(0, 0, 0);
+  opacity: 0.7;
+
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}

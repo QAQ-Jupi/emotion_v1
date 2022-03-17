@@ -1,0 +1,40 @@
+<!--pages/record/record.wxml-->
+
+<view class="timeBar">
+  <view class="front">    
+    <image src="/images/icons/front.png"></image>
+  </view>
+
+  <view class="monthAndYear">2020年1月</view>
+  
+  <view class="next">
+    <image src="/images/icons/next.png"></image>
+  </view>
+</view>
+
+<view class="dayBar">
+  <scroll-view scroll-x="true">
+    <view class="day">
+      <view class="week">Thu</view>
+      <view class="date">21</view>
+      <view class="pointBox"><view class="point"></view></view>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="bottom">
+  <scroll-view scroll-y="true">
+    <view class="recordBox">
+      <view class="left">
+        <image src="../../images/expressions/neutral.png"></image>
+      </view>
+      <view class="right">
+        <view>
+          <view class="littleDate">2020-02-08</view>
+          <view class="time">16:21</view>
+          <view class="describe">今天发生了xxx</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

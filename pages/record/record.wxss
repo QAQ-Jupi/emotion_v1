@@ -1,0 +1,229 @@
+/* pages/record/record.wxss */
+
+page{
+  background-color: #c8edff;
+  width: 100%;
+  height: 100%;
+}
+
+.timeBar{
+  position: absolute;
+  display: flex;
+
+  width: 100%;
+  height: 8%;
+
+  /* background-color: rgb(177, 208, 255); */
+  background-color: #fff;
+  border-top: solid 1px rgb(212, 212, 212);
+  /* border-bottom: solid 1px gray; */
+}
+
+.front{
+  position: absolute;
+  display: flex;
+
+  width: 12%;
+  height: 100%;
+
+  left: 0%;
+
+  /* background-color: #fff; */
+  align-items: center;
+}
+
+.front image{
+  position: absolute;
+
+  width: 50rpx;
+  height: 50rpx;
+
+  right: 20rpx;
+}
+
+.next{
+  position: absolute;
+  display: flex;
+
+  width: 12%;
+  height: 100%;
+
+  right: 0%;
+
+  /* background-color: #fff; */
+  align-items: center;
+}
+
+.next image{
+  position: absolute;
+
+  width: 50rpx;
+  height: 50rpx;
+
+  right: 30rpx;
+}
+
+.monthAndYear{
+  position: absolute;
+  display: flex;
+
+  width: 76%;
+  height: 100%;
+
+  left: 12%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.dayBar{
+  position: absolute;
+  display: flex;
+
+  width: 100%;
+  height: 12%;
+
+  top: 8%;
+
+  background-color: #fff;
+  border-top: solid 1px rgb(212, 212, 212);
+}
+
+.dayBar scroll-view{
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  /* background-color: #fff; */
+  white-space: nowrap;
+}
+
+.day{
+  display: inline-block;
+  width: 15%;
+  height: 100%;
+
+  /* background-color: #fff; */
+}
+
+.week{
+  /* position: absolute; */
+  display: flex;
+
+  width: 100%;
+  height: 30%;
+
+  /* background-color: rgb(117, 250, 255); */
+  font-size: small;
+
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.date{
+  display: flex;
+
+  width: 100%;
+  height: 55%;
+
+  /* background-color: rgb(72, 218, 255); */
+
+  justify-content: center;
+  align-items: center;
+}
+
+.pointBox{
+  display: flex;
+
+  width: 100%;
+  height: 15%;
+
+  /* background-color: rgb(148, 168, 255); */
+
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.point{
+  width: 12rpx;
+  height: 12rpx;
+
+  background-color: #c8edff;
+  border-radius: 50%;
+}
+
+.bottom{
+  position: absolute;
+  display: flex;
+
+  width: 90%;
+  height: 77%;
+
+  top: 23%;
+  left: 5%;
+
+  /* background-color: rgb(179, 180, 255); */
+}
+
+.bottom scroll-view{
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  /* background-color: #fff; */
+  white-space: nowrap;
+}
+
+.recordBox{
+  display: flex;
+
+  width: 100%;
+  height: 17%;
+
+  /* background-color: rgb(189, 210, 255); */
+  background-color: #fff;
+
+  /* margin-top: 30rpx; */
+  margin-bottom: 30rpx;
+  border-radius: 30rpx;
+}
+
+.left{
+  display: flex;
+
+  width: 25%;
+  height: 100%;
+
+  /* background-color: #fff; */
+  justify-content: center;
+  align-items: center;
+}
+
+.left image{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.right{
+  display: flex;
+
+  width: 75%;
+  height: 100%;
+
+  /* background-color: rgb(160, 212, 255); */
+  align-items: center;
+}
+
+.littleDate{
+  font-size: small;
+}
+
+.time{
+  font-size: large;
+}
+
+.describe{
+  margin-top: 5rpx;
+}
