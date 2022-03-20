@@ -57,6 +57,13 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    wx.cloud.callFunction({
+      // 要调用的云函数名称
+      name: 'login',
+    }).then(res => {
+      console.log('【index调用云函数login返回值】', res.result)
+      app.globalData.openid = res.result.openid
+    })
 
   },
 

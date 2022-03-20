@@ -4,4 +4,4 @@
   <image class="bg" src="../../images/cover/cover2.png" mode="aspectFill"></image>
 </view>
 <image class="title" src="../../images/cover/title.png" mode="aspectFit"></image>
-<view bindtap="login" class="toLogin">授权登录</view>
+<view bindtap="login" class="toLogin">进入识绪</view>
