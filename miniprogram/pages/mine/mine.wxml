@@ -3,7 +3,7 @@
   <view class="bg"></view>
   <view class="head"><image src="{{pic}}"></image></view>
   <view class="name">{{name}}</view>
-  <view class="modify">编辑</view>
+  <!-- <view class="modify">编辑</view> -->
 </view>
 
 
@@ -34,6 +34,6 @@
 
 
 <view class="bottom">
-  <view>退出登录</view>
+  <view bindtap="logout">退出登录</view>
 </view>
 

@@ -1,23 +1,26 @@
 <!--pages/record/record.wxml-->
 
 <view class="timeBar">
-  <view class="front">    
+  <view class="front" name="front" bindtap="front">    
     <image src="/images/icons/front.png"></image>
   </view>
 
-  <view class="monthAndYear">2020年1月</view>
+  <view class="monthAndYear">{{show.year}}年{{show.month}}月</view>
   
-  <view class="next">
+  <view class="next" name="next" bindtap="next">
     <image src="/images/icons/next.png"></image>
   </view>
 </view>
 
 <view class="dayBar">
   <scroll-view scroll-x="true">
-    <view class="day">
-      <view class="week">Thu</view>
-      <view class="date">21</view>
-      <view class="pointBox"><view class="point"></view></view>
+    <view class="day {{((index+1)==chosen.date && monthList[index].monthDay==chosen.month && monthList[index].yearDay==chosen.year)?'BeChosen':''}}" wx:for="{{monthList}}" wx:for-index="index" data-index='{{index}}' bindtap="dayChosen">
+      <view class="week">{{monthList[index].week}}</view>
+      <view class="date">{{monthList[index].day}}</view>
+      <view class="pointBox">
+        <view class="{{((index+1)==chosen.date && monthList[index].monthDay==chosen.month && monthList[index].yearDay==chosen.year)?'point0':'point1'}}" wx:if="{{(index+1)==today.nowDate && monthList[index].monthDay==today.nowMonth && monthList[index].yearDay==today.nowYear}}"></view>
+        <view class="point2" wx:else></view>
+      </view>
     </view>
   </scroll-view>
 </view>
