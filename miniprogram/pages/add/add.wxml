@@ -1,52 +1,97 @@
 <view class="top">
-  <view class="topButton bechosen">
-   <view class="topTitle">手动操作</view>
+  <view class="topButton {{mode==0?'bechosen':''}}" bindtap="manualMode">
+   <view class="topTitle">手动操作</view> 
   </view>
-  <view class="topButton">
+  <view class="topButton {{mode==1?'bechosen':''}}" bindtap="realtimeMode">
     <view class="topTitle">实时扫描</view>
   </view>
 </view>
 
-<view class="center neutral">
-<view class="center1">
-  <view class="front">
-    <image src="/images/icons/front.png"></image>
+<view class="center_1 {{mode==0?'':'modeChange'}}">
+  <view class="center1">
+    <view class="front" bindtap="changeClick" data-index="-1">
+      <image src="/images/icons/front.png"></image>
+    </view>
+    <view class="expressions">
+      <view>{{emotionText}}</view>
+      <image src="{{emotionPic}}"></image>
+    </view>
+    <view class="next" bindtap="changeClick" data-index="1">
+      <image src="/images/icons/next.png"></image>
+    </view>
   </view>
-  <view class="expressions">
-    <view>neutral</view>
-    <image src="/images/expressions/neutral.png"></image>
+
+
+  <view class="center2">
+    <view class="listText_2">时间：</view>
+    <view class="contain_2">
+      <picker mode="date" start="2020-01-01" end="2022-10-10" bindchange="listenerDatePickerSelected" class="timeHalf">{{date}}</picker>
+      <view class="divLine2"></view>
+      <picker mode="time" start="00:00" end="24:00" bindchange="listenerTimePickerSelected" class="timeHalf">{{time}}</picker>
+    </view>
+    <view class="divLine"></view>
   </view>
-  <view class="next">
-    <image src="/images/icons/next.png"></image>
+
+
+  <view class="center3">
+    <view class="listText_3">标签：</view>
+    <view class="contain_3">
+      <view class="tr" wx:for="{{3}}" wx:for-index="indexTR">
+        <view class="{{showFeeling[indexTR][indexTD][2]}}" wx:for="{{4}}" wx:for-index="indexTD" bindtap="labelSelected" data-indexTR="{{indexTR}}" data-indexTD="{{indexTD}}">{{showFeeling[indexTR][indexTD][0]}}</view>
+      </view>
+    </view>
+    <view class="divLine"></view>
   </view>
+
+
+  <view class="center4">
+    <view class="c4Box">
+      <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述"></textarea>
+    </view>
+  </view>
+
+  <view class="placeHolder"></view>
 </view>
 
-
-<view class="center2">
-  <view class="listText">时间：</view>
-  <view class="contain"></view>
-  <view class="choose">
-    <image src="/images/icons/next.png"></image>
+<view class="center_2 {{mode==1?'':'modeChange'}}">
+  <view class="boxForCamera">
+    <camera device-position="front" flash="off" style="width: 100%; height: 100%;"></camera>
   </view>
-  <view class="divLine"></view>
-</view>
 
 
-<view class="center3">
-  <view class="listText">标签：</view>
-  <view class="contain"></view>
-  <view class="choose">
-    <image src="/images/icons/next.png"></image>
+  <view class="center5">
+    <view class="listText_2">情绪：</view>
+    <view class="contain_2"></view>
+    <view class="divLine"></view>
   </view>
-  <view class="divLine"></view>
-</view>
 
 
-<view class="center4">
-  <view class="c4Box">
-    <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述"></textarea>
+  <view class="center2">
+    <view class="listText_2">时间：</view>
+    <view class="contain_2"></view>
+    <view class="divLine"></view>
   </view>
-</view>
+
+
+  <view class="center3">
+    <view class="listText_3">标签：</view>
+    <view class="contain_3">
+      <view class="tr" wx:for="{{3}}" wx:for-index="indexTR">
+        <view class="{{showFeeling[indexTR][indexTD][2]}}" wx:for="{{4}}" wx:for-index="indexTD" bindtap="labelSelected" data-indexTR="{{indexTR}}" data-indexTD="{{indexTD}}">{{showFeeling[indexTR][indexTD][0]}}</view>
+      </view>
+    </view>
+    <view class="divLine"></view>
+  </view>
+
+
+
+  <view class="center4">
+    <view class="c4Box">
+      <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述"></textarea>
+    </view>
+  </view>
+
+  <view class="placeHolder"></view>
 
 </view>
 
@@ -58,7 +103,7 @@
   </view>
   <view class="bottomBox1">
     <view class="bottomBox2 cancel">  
-      <view class="bottomButton">取消</view>
+      <view class="bottomButton">重来</view>
     </view>
   </view>
 </view>

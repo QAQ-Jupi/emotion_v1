@@ -32,11 +32,26 @@
   color: #fff;
 }
 
-.center{
+.center_1{
   position: absolute;
+  /* display: none; */
   width: 100%;
   height: 100%;
   top: 0;
+}
+
+.center_2{
+  position: absolute;
+  /* display: none; */
+  width: 100%;
+  height: 100%;
+  top: 0;
+
+  /* background-color: rgb(211, 254, 255); */
+}
+
+.modeChange{
+  display: none;
 }
 
 .center1{
@@ -154,7 +169,7 @@
   /* background-color: rgb(255, 70, 70); */
 }
 
-.listText{
+.listText_2{
   position: absolute;
   display: flex;
 
@@ -168,17 +183,40 @@
   justify-content: center;
 }
 
-.contain{
+.contain_2{
   position: absolute;
   display: flex;
 
-  width: 65%;
+  width: 70%;
   height: 100%;
   left: 20%;
 
   /* background-color: rgb(48, 34, 87); */
+  color: #aaaaaa;
 
   align-items: center;
+}
+
+.timeHalf{
+  display: flex;
+
+  width: 50%;
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.divLine2{
+  position: absolute;
+
+  width: 2rpx;
+  height: 70%;
+
+  top: 15%;
+  left: 50%;
+
+  background-color: #dbdbdb;
 }
 
 .choose{
@@ -220,11 +258,89 @@
   position: absolute;
   
   width: 100%;
-  height: 8%;
+  height: 24%;
 
   top:58%;
 
   /* background-color: rgb(255, 142, 142); */
+}
+
+.listText_3{
+  position: absolute;
+  display: flex;
+
+  width: 15%;
+  height: 33%;
+  left: 5%;
+
+  /* background-color: #fff; */
+
+  align-items: center;
+  justify-content: center;
+}
+
+.contain_3{
+  position: absolute;
+
+  width: 70%;
+  height: 100%;
+  left: 20%;
+
+  align-items: center;
+}
+
+.tr{
+  /* display: block; */
+  display: flex;
+  width: 100%;
+  height: 33%;
+
+  /* background-color: rgb(209, 133, 133); */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.td{
+  display: flex;
+
+  width: 20%;
+  height: 60%;
+
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 30rpx;
+  border:  1rpx solid #00AAFF;
+  color: #00AAFF;
+}
+
+.blanktd{
+  display: flex;
+
+  width: 20%;
+  height: 60%;
+
+  /* background-color: #fff; */
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 30rpx;
+}
+
+.chosentd{
+  display: flex;
+
+  width: 20%;
+  height: 60%;
+
+  background-color: #00AAFF;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 30rpx;
+  border:  1rpx solid #00AAFF;
+  color: #ffffff;
 }
 
 .center4{
@@ -234,7 +350,7 @@
   width: 100%;
   height: 26%;
 
-  top:66%;
+  top:82%;
 
   /* background-color: rgb(255, 190, 190); */
 }
@@ -259,9 +375,41 @@
   width: 100%;
 }
 
-.bottom{
+.boxForCamera{
+  /* display: flex; */
+  position: absolute;
+  
+  width: 100%;
+  height: 34%;
+
+  top:8%;
+  background-color: #fff;
+}
+
+.center5{
   display: flex;
   position: absolute;
+  
+  width: 100%;
+  height: 8%;
+
+  top:42%;
+}
+
+.placeHolder{
+  position: absolute;
+  width: 100%;
+  height: 8%;
+
+  top: 108%;
+
+  background-color: #00AAFF;
+}
+
+.bottom{
+  display: flex;
+  /* position: absolute; */
+  position: fixed;
 
   width: 100%;
   height: 8%;
