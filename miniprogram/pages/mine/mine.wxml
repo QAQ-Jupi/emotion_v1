@@ -9,27 +9,28 @@
 
 <view class="lists">
   <view class="divLineAll"></view>
-  <view class="list">
+  <view class="list" bindtap="jumpCollection">
     <view class="func">收藏</view>
     <view class="in">
       <image src="/images/icons/next.png"></image>
     </view>
   </view>
   <view class="divLine"></view>
-  <view class="list">
+  <view class="list" bindtap="jumpAbout">
     <view class="func">关于聆绪</view>
     <view class="in">
-      <image src="/images/icons/next.png"></image>
+    <image src="/images/icons/next.png"></image>
     </view>
   </view>
   <view class="divLine"></view>
-  <view class="list">
+  <view class="list" bindtap="reply">
     <view class="func">在线客服</view>
     <view class="in">
       <image src="/images/icons/next.png"></image>
     </view>
   </view>
-  <view class="list">
+  <view class="divLine"></view>
+  <view class="list" bindtap="txc">
     <view class="func">问题与反馈</view>
     <view class="in">
       <image src="/images/icons/next.png"></image>
@@ -43,3 +44,17 @@
   <view bindtap="logout">退出登录</view>
 </view> -->
 
+
+<view wx:if='{{sub==true}}'>
+  <view catchtouchmove="catchtouchmove" class="tips">
+    <view class="tips_box">
+      <view class="hint_view">
+        <view class="text">
+          <view class="my_text_bottom">此客服通道可询问您关于聆绪小程序的疑惑</view>
+        </view>
+      </view>
+      <button class="noAgreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 20rpx;" open-type='contact'>在线客服</button>
+      <button bindtap="cancel" class="agreeBtn" style="width: 382rpx;min-height: 50rpx;border-radius: 20rpx;">取消</button>
+    </view>
+  </view>
+</view>

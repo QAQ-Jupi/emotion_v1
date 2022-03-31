@@ -8,7 +8,9 @@
         "pages/add/add",
         "pages/logs/logs",
         "pages/index/index",
-        "pages/find/artical/artical"
+        "pages/find/artical/artical",
+        "pages/mine/about/about",
+        "pages/mine/myCollection/myCollection"
     ],
     "window": {
         "backgroundTextStyle": "light",

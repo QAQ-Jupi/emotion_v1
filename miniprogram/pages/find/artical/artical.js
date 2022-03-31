@@ -183,13 +183,6 @@ Page({
   postCollection: async function() {
     let that = this
     if (!that.data.collection.status) {
-      that.setData({
-        collection: {
-          status: true,
-          text: "已收藏",
-          icon: "favorfill"
-        }
-      })
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
@@ -200,54 +193,56 @@ Page({
         }
       }).then(function(res) {
         console.log("【detail调用函数uploadInteraction】【收藏成功】", res)
+        that.setData({
+            collection: {
+              status: true,
+              text: "已收藏",
+              icon: "favorfill"
+            }
+          })
       }).catch(function(err) {
         console.log(err)
         wx.showToast({
           title: '收藏失败',
         })
-        that.setData({
-          collection: {
-            status: false,
-            text: "收藏",
-            icon: "favor"
-          }
-        })
       })
     }else{
-      that.setData({
-        collection: {
-          status: false,
-          text: "收藏",
-          icon: "favor"
-        }
-      })
-      wx.cloud.callFunction({
-        name: 'deleteAny',
-        data: {
-          'jihe':"interaction",
-          "mywhere":{
-            userOpenid:app.globalData.openid,
-            flag:'artical',
-            articalID:that.data._options.id,
-          },
-        }
-      }).then(function(res) {
-        console.log("【artical.detail调用函数deleteAny】【删除成功】", res)
-      }).catch(function(err) {
-        console.log(err)
-        wx.showToast({
-          title: '取消收藏失败',
+        wx.showModal({
+            title: '温馨提示',
+            content: '请确认是否取消收藏？',
+            success: (({
+              confirm
+            }) => {
+              if (confirm) {
+                wx.cloud.callFunction({
+                    name: 'deleteAny',
+                    data: {
+                    'jihe':"interaction",
+                    "mywhere":{
+                        userOpenid:app.globalData.openid,
+                        flag:'artical',
+                        articalID:that.data._options.id,
+                    },
+                    }
+                }).then(function(res) {
+                    console.log("【artical.detail调用函数deleteAny】【删除成功】", res)
+                    that.setData({
+                        collection: {
+                          status: false,
+                          text: "收藏",
+                          icon: "favor"
+                        }
+                    })
+                }).catch(function(err) {
+                    console.log(err)
+                    wx.showToast({
+                    title: '取消收藏失败',
+                    })
+                })
+              }
+            })
         })
-        that.setData({
-          collection: {
-            status: true,
-            text: "已收藏",
-            icon: "favorfill"
-          }
-        })
-      })
     }
-    
   },
   /**
    * 点赞功能
@@ -258,13 +253,6 @@ Page({
     //此处按照逻辑需要判断是否曾经点过赞
     //若点过赞，则不能多次点赞，增加数据库负担
     if (!that.data.zan.status) {
-      that.setData({
-        zan: {
-          status: true,
-          text: "已赞",
-          icon: "appreciatefill"
-        }
-      })
       await wx.cloud.callFunction({
         name: 'uploadInteraction',
         data: {
@@ -274,52 +262,55 @@ Page({
           }
       }).then(function(res) {
         console.log("【detail调用函数uploadInteraction】【点赞成功】", res)
+        that.setData({
+            zan: {
+              status: true,
+              text: "已赞",
+              icon: "appreciatefill"
+            }
+          })
       }).catch(function(err) {
         console.log(err)
         wx.showToast({
           title: '点赞失败',
         })
-        that.setData({
-          zan: {
-            status: false,
-            text: "点赞",
-            icon: "appreciate"
-          }
-        })
       })
     }else{
-      that.setData({
-        zan: {
-          status: false,
-          text: "点赞",
-          icon: "appreciate"
-        }
-      })
-      wx.cloud.callFunction({
-        name: 'deleteAny',
-        data: {
-          'jihe':"interaction",
-          "mywhere":{
-            userOpenid:app.globalData.openid,
-            flag:'like',
-            articalID:that.data._options.id,
-          },
-        }
-      }).then(function(res) {
-        console.log("【artical.detail调用函数deleteAny】【删除成功】", res)
-      }).catch(function(err) {
-        console.log(err)
-        wx.showToast({
-          title: '取消点赞失败',
+        wx.showModal({
+            title: '温馨提示',
+            content: '请确认是否取消点赞？',
+            success: (({
+              confirm
+            }) => {
+              if (confirm) {
+                wx.cloud.callFunction({
+                    name: 'deleteAny',
+                    data: {
+                    'jihe':"interaction",
+                    "mywhere":{
+                        userOpenid:app.globalData.openid,
+                        flag:'like',
+                        articalID:that.data._options.id,
+                    },
+                    }
+                }).then(function(res) {
+                    console.log("【artical.detail调用函数deleteAny】【删除成功】", res)
+                    that.setData({
+                        zan: {
+                        status: false,
+                        text: "点赞",
+                        icon: "appreciate"
+                        }
+                    })
+                }).catch(function(err) {
+                    console.log(err)
+                    wx.showToast({
+                    title: '取消点赞失败',
+                    })
+                })
+              }
+            })
         })
-        that.setData({
-          zan: {
-            status: true,
-            text: "已赞",
-            icon: "appreciatefill"
-          }
-        })
-      })
     }
   },
 

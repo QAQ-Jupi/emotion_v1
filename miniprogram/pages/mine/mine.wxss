@@ -194,3 +194,82 @@
   align-items: center;
 
 }
+
+
+.tips {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+  }
+  
+  .tips .tips_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    height: auto;
+    border-radius: 45rpx;
+    background: #fff;
+    overflow: hidden;
+  }
+  
+  .tips .tips_box .hint_view {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tips .tips_box .hint_view .text {
+    display: flex;
+    flex-direction: column;
+    margin: 12rpx 24rpx;
+  }
+  
+  .tips .tips_box .hint1 {
+    margin-top: 38rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #1a1a1a;
+    line-height:52rpx;
+    border-bottom:1px solid;
+  }
+  .isTipShow {
+  display: block;
+  }
+  
+  .isTipHide {
+  display: none;
+  }
+  .my_text_bottom{
+    width: 450rpx;
+      color: var(--darkBlue);
+      font-size: 28rpx;
+      line-height: 150%;
+      text-align: left;
+    margin-top:32rpx ;
+  }
+  .agreeBtn {
+    color: #1a1a1a;
+      background-color: #8bd8ff;
+      font-size: 32rpx;
+      text-align: center;
+    margin-top:26rpx ;
+    margin-bottom:36rpx ;
+    border-radius: 40rpx;
+    opacity: 0.7;
+  }
+  .noAgreeBtn {
+    color: #1a1a1a;
+      background-color: #8bd8ff;
+      font-size: 32rpx;
+      text-align: center;
+    margin-top:40rpx ;
+    border-radius: 40rpx;
+     opacity: 0.7;
+  }

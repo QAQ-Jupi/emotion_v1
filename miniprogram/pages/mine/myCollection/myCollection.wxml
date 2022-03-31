@@ -1,0 +1,14 @@
+<!--pages/mine/myCollection/myCollection.wxml-->
+<!--内容-->
+<view class="topTitle">我的收藏</view>
+<block wx:if="{{articalList.length>0}}">
+    <view wx:for="{{articalList}}">
+        <navigator class="text-item" hover-class="none" url="../../find/artical/artical?id={{item.articalID}}">
+            <view class="block"></view>
+            {{item.articalName}}
+        </navigator>
+    </view>
+</block>
+<block wx:else>
+    <view class="nodata">    {{ '—— 您没有收藏任何数据哦 ——' }}</view>
+</block>

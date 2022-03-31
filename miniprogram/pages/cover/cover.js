@@ -5,7 +5,7 @@ Page({
 
   login(){
     wx.reLaunch({
-      url: '../mine/mine?name='+app.globalData.myWxname+'&pic='+app.globalData.myAvatarUrl,
+      url: '../mine/mine',
     })
   },
 

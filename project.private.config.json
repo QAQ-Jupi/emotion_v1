@@ -14,6 +14,20 @@
                     "query": "id=efbc6d7162442e4902eb665f27352625",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/about/about",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/mine/myCollection/myCollection",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

@@ -12,7 +12,6 @@ const _ = db.command
 
 // 云函数入口函数
 exports.main = async(event, context) => {
-  const wxContext = cloud.getWXContext()
   return db.collection(event.collection).doc(event._id).update({
     data: {
       viwerNum: _.inc(1)

@@ -1,0 +1,9 @@
+<!--pages/mine/about/about.wxml-->
+<view class="title">
+	关于聆绪
+</view>
+<view class='intro'>
+	<text  decode='true'> 
+		&nbsp;&nbsp;&nbsp;&nbsp;本小程序利用自创的基于深度学习的情绪识别算法，对人脸的情绪进行识别，类别为：积极、消极、中立。同时，提供一个平台辅助用户记录自己的情绪，帮助用户调节情绪。
+	</text>
+</view>
