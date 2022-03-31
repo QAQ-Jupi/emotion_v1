@@ -1,8 +1,6 @@
 <!--pages/find/find.wxml-->
-
 <view class="top">
   <view class="topTitle">推荐</view>
-
   <view class="topBox">
     <view class="recommend1">1</view>
     <view class="recommend0">
@@ -10,21 +8,37 @@
       <view class="recommend3">3</view>
     </view>
   </view>
-
 </view>
-
-
 <view class="bottom">
   <view class="bottomTitle">更多</view>
-  <view class="classification">
-    <view>积极</view>
-    <view>中立</view>
-    <view>消极</view>
-  </view>
-  <view class="article">
-    <view class="pic">
-      <image></image>
+  <!--三大部分-->
+  <scroll-view class='three-nav' scroll-with-animation='true' bindtap='tabSelect'>
+    <view wx:for='{{emotions}}' wx:key='*this' class='item-nav {{i==index ? "active" : ""}}'
+      data-i='{{index}}'>{{item.title}}
     </view>
-    <view class="articleTitle">如何调节心情</view>
-  </view>
+  </scroll-view>
+  <swiper current="{{i}}" class="swiper-box" duration="300" style="height:840rpx" bindchange="changeSwipe">
+    <swiper-item wx:for="{{emotions}}" wx:for-item="e">
+      <scroll-view scroll-y="{{true}}" style="height:840rpx">
+        <view class="news">
+          <view wx:for="{{newsList}}" class="news_list"  wx:if="{{item.type==e.type}}"  bindtap="jumpNew" data-id="{{item._id}}">
+            <view class="news_top">
+                <image mode="widthFix" src="{{item.coverImgUrl}}"></image>
+                <text class="news_date">{{item.time}}</text>
+            </view>
+            <view class="news_bottom">
+                <view class="news_title">{{item.title}}</view>
+                <view class="news_subTitle news_text">{{item.introduction}}</view>
+                <view class="news_data">            
+                    <text>阅读:{{item.viwerNum}} | </text>         
+                    <text>{{item.author}} | </text>          
+                    <text>来源:{{item.source}}</text>
+                </view>
+            </view>
+          </view>
+          <view class='bott'>{{bottomtext}}</view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
 </view>

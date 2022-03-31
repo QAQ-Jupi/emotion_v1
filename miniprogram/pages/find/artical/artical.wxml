@@ -1,0 +1,81 @@
+<!--pages/find/artical/artical.wxml-->
+<!-- 文章详情 -->
+<view class="bg-white" style="opacity:0.85;">
+  <view class="cu-card dynamic no-card">
+    <view class="cu-item shadow">
+      <view class='title'>{{post.title}}</view>
+      <view class="grid col-1 flex-sub padding-lr">
+        <view class="bg-img only-img" style="background-image:url({{post.defaultImageUrl}})" />
+      </view>
+      <view class='text-gray text-sm text-right padding'>
+        <text class="cuIcon-timefill" /> {{post.createTime}}
+        <text class="cuIcon-attentionfill" /> {{post.totalVisits}}
+        <text class="cuIcon-appreciatefill" /> {{post.totalZans}}
+        <text class="cuIcon-messagefill" /> {{post.commentList.length}}
+      </view>
+    </view>
+  </view>
+  <view class="detail-body" style="height:{{hideArticle}}">
+    <towxml nodes="{{post.artical}}" />
+  </view>
+</view>
+<!-- 评论列表 -->
+<view class="bg-white margin-top-xs" style="opacity:0.85;" >
+  <view class="cu-bar" >
+    <view class='action'>
+      <text class='cuIcon-titles myblue'></text> 共{{post.commentList.length}}条评论
+    </view>
+  </view>
+  <!-- 数据不存在 -->
+  <view wx:if="{{post.commentList.length==0?true:false}}" style="margin-top:30rpx;margin-bottom:80rpx;">
+    <view class="nodata">    {{ nodata_str || '—— 没有对应的数据哦 ——' }}</view>
+  </view>
+  <view class="cu-list menu menu-avatar comment solids-top">
+    <view class="cu-item" wx:for="{{post.commentList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <image class="cu-avatar round" src="{{item.imgUrl}}"></image>
+      <view class='content'>
+        <view class='text-grey' data-id="{{item._id}}" data-name="{{item.nickame}}" data-openid="{{item.userOpenId}}" bindtap="focusComment">
+          {{item.nickname}}
+        </view>
+        <view class='text-gray text-content text-df'>{{item.comment}}</view>
+        <view class='flex justify-between'>
+          <view class='text-gray text-df'></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="padding:50rpx"></view>
+</view>
+<!-- 底部功能 -->
+<view class="comment-fixed" >
+  <view class="cu-bar input">
+    <image src="{{myAvatarUrl}}" class="cu-avatar round yuan"/>
+    <view class='action' wx:if="{{isShow}}" bindtap='showMenuBox'>
+      <image src="../../../images/jian.png" class='ic'></image>
+    </view>
+    <view class='action' wx:else bindtap='showMenuBox'>
+      <image src="../../../images/jia.png" class='ic'></image>
+    </view>
+    <input class='solid-bottom' maxlength="300" cursor-spacing="10" confirm-type="send" bindinput='commentInput' name="inputComment" value="{{commentContent}}" placeholder="{{placeholder}}" focus="{{focus}}" bindblur="onReplyBlur"></input>
+    <view class='darkblue' bindtap="timeOutSubmit" disabled="{{isDisable}}">发送</view>
+  </view>
+
+  <!-- </form> -->
+  <view class="cu-list grid col-3 no-border menu-box {{isShow ? 'emoji-move-in' : 'emoji-move-out'}}">
+    <view class="cu-item item">
+      <view class='cuIcon-share myblue' style="margin-top:0;"></view>
+      <text>转发</text>
+      <button class="share-button" open-type="share" bindtap="myshare" ></button>
+    </view>
+    <view class="cu-item item">
+      <view class='cuIcon-{{collection.icon}} myblue' style="margin-top:0;"></view>
+      <text>{{collection.text}}</text>
+      <button class="share-button" bindtap="postCollection"></button>
+    </view>
+    <view class="cu-item item">
+      <view class='cuIcon-{{zan.icon}} myblue' style="margin-top:0;"></view>
+      <text>{{zan.text}}</text>
+      <button class="share-button" bindtap="postZan"> </button>
+    </view>
+  </view>
+</view>

@@ -1,20 +1,11 @@
 // pages/cover/cover.js
+const app = getApp()
+
 Page({
 
   login(){
-    wx.getUserProfile({
-      desc: '必须进行授权',
-      success: res=>{
-        console.log('授权成功',res.userInfo)
-        var name = res.userInfo.nickName;
-        var pic = res.userInfo.avatarUrl;
-        wx.reLaunch({
-          url: '../mine/mine?name='+name+'&pic='+pic,
-        })
-      },
-      fail:res=>{
-        console.log('授权失败',res)
-      }
+    wx.reLaunch({
+      url: '../mine/mine?name='+app.globalData.myWxname+'&pic='+app.globalData.myAvatarUrl,
     })
   },
 
@@ -57,13 +48,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    wx.cloud.callFunction({
-      // 要调用的云函数名称
-      name: 'login',
-    }).then(res => {
-      console.log('【index调用云函数login返回值】', res.result)
-      app.globalData.openid = res.result.openid
-    })
+
 
   },
 

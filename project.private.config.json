@@ -1,0 +1,22 @@
+{
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "pages/find/find",
+                    "pathName": "pages/find/find",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/find/artical/artical",
+                    "query": "id=efbc6d7162442e4902eb665f27352625",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
+    },
+    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+}

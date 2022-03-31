@@ -1,0 +1,20 @@
+<view class="cu-custom" style="height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + 'https://6d78-mxt-2g3a02pj904c9b1f-1305827184.tcb.qcloud.la/topbg.png?sign=a908e0c9009b6e9d0304abf402312d58&t=1620795876' + ')':''}}">
+    <view class="action" bindtap="BackPage" wx:if="{{isBack}}">
+      <text class="cuIcon-back"></text>
+      <slot name="backText"></slot>
+    </view>
+    <view class="action" wx:if="{{isCustom}}" bindtap="toHome" class="action">
+      <text class="cuIcon-back"></text>
+      <slot name="backText"></slot>
+    </view>
+    <view class="action border_geren"  wx:if="{{istogeren}}" style="width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)" bindtap="togeren">
+      <text class="cuIcon-my"></text>
+      <!-- <slot name="backText"></slot> -->
+    </view>
+    <view class="content" style="top:{{StatusBar}}px">
+      <slot name="content"></slot>
+    </view>
+    <slot name="right"></slot>
+  </view>
+</view>

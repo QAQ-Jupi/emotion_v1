@@ -160,6 +160,11 @@ Page({
       showFeeling: diffShowFeeling
     })
     console.log(this.data.showFeeling)
+    // const context = wx.createCameraContext()
+    // const listener = context.onCameraFrame((frame) => {
+    //   console.log(frame.data instanceof ArrayBuffer, frame.width, frame.height)
+    // })
+    // listener.start()
   },
 
   /**

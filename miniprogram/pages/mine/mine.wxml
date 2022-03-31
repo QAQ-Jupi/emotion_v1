@@ -17,14 +17,20 @@
   </view>
   <view class="divLine"></view>
   <view class="list">
-    <view class="func">浏览历史</view>
+    <view class="func">关于聆绪</view>
     <view class="in">
       <image src="/images/icons/next.png"></image>
     </view>
   </view>
   <view class="divLine"></view>
   <view class="list">
-    <view class="func">联系我们</view>
+    <view class="func">在线客服</view>
+    <view class="in">
+      <image src="/images/icons/next.png"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="func">问题与反馈</view>
     <view class="in">
       <image src="/images/icons/next.png"></image>
     </view>
@@ -33,7 +39,7 @@
 </view>
 
 
-<view class="bottom">
+<!-- <view class="bottom">
   <view bindtap="logout">退出登录</view>
-</view>
+</view> -->
 
