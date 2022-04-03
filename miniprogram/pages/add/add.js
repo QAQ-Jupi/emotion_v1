@@ -1,4 +1,7 @@
 // pages/add/add.js
+
+var util = require('../../utils/util.js');
+const app = getApp()
 Page({
 
   /**
@@ -35,19 +38,109 @@ Page({
     showFeeling: [], //显示的标签，用深拷贝方式获取上面三个列表中的其中一个
     selectFeeling:[], //存储被选中的标签
 
+    nowemotion: "unknown",
+    nowtime: "",
+    nowpic:"../../images/chooseImage3.png",
+    nowdetail:'',
   },
+  getContentInput(e){
+    const value = e.detail.value;
+    this.data.content = value;
+    // var len = parseInt(value.length);
+    this.setData({
+      // contentCount: len,
+      nowdetail:e.detail.value
+    })
+  },
+//选择图片
+chooseImage: function () {
+  var _this = this;
+  wx.showModal({
+    title: '温馨提示',
+    content: '请选择一张你当前面部的一张图片。',
+    showCancel: false,
+    confirmText: '确定',
+    confirmColor: '#04213c',
+    success: function(res) {
+      wx.chooseImage({
+        count: 1,
+        sizeType: ['original', 'compressed'],
+        sourceType: ['album', 'camera'],
+        success(res) {
+          // tempFilePath可以作为img标签的src属性显示图片
+          const tempFilePaths = res.tempFilePaths[0];
+          // 获取图片路径
+          // app.globalData.imgPath = tempFilePaths
+          // console.log(tempFilePaths);
+          wx.showLoading({
+            title: '识别中……',
+            mask: true
+          });
+          wx.uploadFile({
+            url: 'https://www.sxshufa.top/recognition/EmotionRecognition',
+            filePath: tempFilePaths,
+            name: 'picture',
+            success: function (res) {
+              var result = JSON.parse(res.data)
+              console.log(result)
+              var emotion = result.emotion
+              wx.hideLoading()
+              if (emotion == '') {
+                wx.showModal({
+                  title: '无法识别',
+                  content: '很抱歉，该图片无法识别，请选择其他图片。',
+                  showCancel: false,
+                  confirmText: '确定',
+                  confirmColor: '#cc9933',
+                  success: function (res) { },
+                  fail: function (res) { },
+                  complete: function (res) { },
+                })
+              }else{
 
+                _this.setData({
+                  nowemotion : emotion,
+                  nowpic : tempFilePaths
+                })
+                console.log("可以了!"+_this.data.nowemotion)
+              }
+            },
+            fail:function(res){
+              wx.showModal({
+                title: '很抱歉！',
+                content: '连接失败。',
+                showCancel: false,
+                confirmText: '确定',
+                confirmColor: '#cc9933',
+                complete: function (res) {
+                  wx.navigateBack({
+                    delta: 1,
+                  })
+                }
+              })
+            }
+          });
+          // wx.navigateTo({
+          //   url: 'upload/upload?imgpath=' + tempFilePaths,
+          // });
+        }
+      });
+    }
+  })    
+},
   //点击‘手动操作’触发事件，将mode改为0
   manualMode: function(){
     this.setData({
-      mode: 0
+      mode: 0,
+      nowdetail: ''
     })
     this.EmotionChange()
   },  
   //点击‘实时扫描’触发事件，将mode改为1
   realtimeMode: function(){
     this.setData({
-      mode: 1
+      mode: 1 ,
+      nowdetail: '',
     })
     this.EmotionChange()
   },
@@ -99,6 +192,7 @@ Page({
       emotionPic: EPic,
       showFeeling: ELabels,
       selectFeeling: []
+      
     })
     // console.log('change');
   },
@@ -115,6 +209,7 @@ Page({
     this.setData({
       time: e.detail.value
     })
+    console.log(this.data.date+this.data.time)
   },
 
   //标签选择事件
@@ -148,7 +243,7 @@ Page({
         showFeeling : this.data.showFeeling
       })
     }
-    // console.log(this.data)
+    console.log(this.data.selectFeeling)
   },
 
   /**
@@ -159,12 +254,114 @@ Page({
     this.setData({
       showFeeling: diffShowFeeling
     })
-    console.log(this.data.showFeeling)
-    // const context = wx.createCameraContext()
-    // const listener = context.onCameraFrame((frame) => {
-    //   console.log(frame.data instanceof ArrayBuffer, frame.width, frame.height)
-    // })
-    // listener.start()
+    console.log("成功")
+    console.log(this.data.selectFeeling)
+
+    let that = this;
+    
+    setInterval(function () {
+      that.setData({
+        nowtime: util.formatTime(new Date())
+      });
+    }, 1000);
+ 
+ 
+   
+  },
+  toagain: function(){
+    let that = this
+    if(that.data.mode==0) {
+      that.manualMode()
+    }
+    else{
+      console.log("重来")
+      that.realtimeMode()
+      that.setData({
+        nowpic:"../../images/chooseImage3.png",
+        nowemotion:"unknown"
+      })
+    }
+  },
+  postemotion: async function() {
+    let that = this
+    if(that.data.mode==1)
+    {
+      //将照片上传至云端需要刚才存储的临时地址
+      var timestamp = Date.parse(new Date());  
+      timestamp = timestamp / 1000; //当前的秒
+      console.log(that.data.showFeeling);
+      wx.cloud.uploadFile({
+        cloudPath: 'recognition/' + app.globalData.openid + '/'+ timestamp  +'.jpg',
+        filePath: that.data.nowpic,  
+        success(res) {
+          console.log("图片上传成功")
+          var img_fileID=res.fileID //图片存储到云存储的fileID
+          wx.cloud.callFunction({
+            name: 'uploademo',
+            data: {
+              'userOpenid': app.globalData.openid,
+              'imgPath': img_fileID,
+              'mode' : that.data.mode,
+              'emotion': that.data.nowemotion,
+              'time': that.data.nowtime,
+              'label' : that.data.selectFeeling,
+              'detail': that.data.nowdetail
+            }
+          }).then(function(res) {
+            console.log("【调用函数uploademo】【保存成功】", res)
+          }).catch(function(err) {
+            console.log(err)
+            wx.showToast({
+              title: '保存失败',
+            })
+          })
+          },
+        fail(err) {
+          wx.showToast({
+            title: '保存失败',
+          })
+        }
+      })
+    }
+    else{
+      console.log("这是mode等于0")
+      console.log(that.data.date)
+      if(that.data.date!="添加日期" && that.data.time!="添加时间"){
+        wx.cloud.callFunction({
+          name: 'uploademo',
+          data: {
+            'userOpenid': app.globalData.openid,
+            'imgPath': '',
+            'emotion': that.data.emotionText,
+            'time': that.data.date+" "+that.data.time,
+            'label' : that.data.selectFeeling,
+            'detail': that.data.nowdetail,
+            'mode' : that.data.mode
+          }
+        }).then(function(res) {
+          console.log("【调用函数uploademo】【保存成功】", res)
+        }).catch(function(err) {
+          console.log(err)
+          wx.showToast({
+            title: '保存失败',
+          })
+        })
+      }
+      else{
+        wx.showToast({
+          title: '时间不能为空',
+        })
+      }
+      
+    }
+  }, 
+//点击获取当前点击时间
+  getTime: function () {
+     let that = this;
+     let currentTime = util.formatTime(new Date());
+     that.setData({
+       nowtime: currentTime
+     })
   },
 
   /**

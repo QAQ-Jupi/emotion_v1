@@ -46,29 +46,29 @@
 
   <view class="center4">
     <view class="c4Box">
-      <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述"></textarea>
+      <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述" value="{{nowdetail}}" bindinput="getContentInput"></textarea>
     </view>
   </view>
 
   <view class="placeHolder"></view>
 </view>
 
-<view class="center_2 {{mode==1?'':'modeChange'}}">
-  <view class="boxForCamera">
-    <camera device-position="front" flash="off" style="width: 100%; height: 100%;"></camera>
+<view class="center_2 {{mode==1?'':'modeChange'}}" >
+  <view class="boxForCamera" bindtap='chooseImage'>
+    <image src="{{nowpic}}" style="width: 60%; height: 100%;"></image>
   </view>
 
 
   <view class="center5">
     <view class="listText_2">情绪：</view>
-    <view class="contain_2"></view>
+    <view class="contain_2" >{{nowemotion}}</view>
     <view class="divLine"></view>
   </view>
 
 
   <view class="center2">
     <view class="listText_2">时间：</view>
-    <view class="contain_2"></view>
+    <view class="contain_2">{{nowtime}}</view>
     <view class="divLine"></view>
   </view>
 
@@ -87,8 +87,11 @@
 
   <view class="center4">
     <view class="c4Box">
-      <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述"></textarea>
+      <textarea name="" id="" cols="30" rows="10" placeholder="添加详细描述" value="{{nowdetail}}" bindinput="getContentInput"></textarea>
     </view>
+  <!-- <view class="down-info bg-white align-center">
+    <view class="text-count">{{contentCount}}/300</view>
+  </view> -->
   </view>
 
   <view class="placeHolder"></view>
@@ -98,11 +101,11 @@
 <view class="bottom">
   <view class="bottomBox1">  
     <view class="bottomBox2 save">  
-      <view class="bottomButton">保存</view>
+      <view class="bottomButton" bindtap="postemotion">保存</view>
     </view>
   </view>
   <view class="bottomBox1">
-    <view class="bottomBox2 cancel">  
+    <view class="bottomBox2 cancel" bindtap="toagain">  
       <view class="bottomButton">重来</view>
     </view>
   </view>
