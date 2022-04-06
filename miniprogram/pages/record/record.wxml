@@ -27,15 +27,15 @@
 
 <view class="bottom">
   <scroll-view scroll-y="true">
-    <view class="recordBox" bindtap="showDetails">
+    <view class="recordBox" bindtap="showDetails" data-item="{{item}}" wx:for="{{daydata}}" wx:for-item="item">
       <view class="left">
-        <image src="../../images/expressions/neutral.png"></image>
+        <image src="{{item.src}}"></image>
       </view>
       <view class="right">
         <view>
-          <view class="littleDate">2020-02-08</view>
-          <view class="time">16:21</view>
-          <view class="describe">今天发生了xxx</view>
+          <view class="littleDate">{{chosen.year}}-{{chosen.month}}-{{chosen.date}}</view>
+          <view class="time">{{item.hour}}:{{item.minute}}</view>
+          <view class="describe">{{item.detail}}</view>
         </view>
       </view>
     </view>
@@ -50,21 +50,21 @@
     <view class="center">
       <view class="emotionAndTime">
         <view class="left_1">
-          <image src="../../images/expressions/neutral.png"></image>
+          <image src="{{pageitem.src}}"></image>
         </view>
         <view class="right_1">
           <view>
             <!-- 2020-02-08 16:21 -->
-            <view class="littleDate">2020-02-08</view>
-            <view class="time">16:21</view>
+            <view class="littleDate">{{chosen.year}}-{{chosen.month}}-{{chosen.date}}</view>
+            <view class="time">{{pageitem.hour}}:{{pageitem.minute}}</view>
           </view>
         </view>
       </view>
       <view class="tagBar">
         <scroll-view scroll-x="true">
-          <view class="tagBox">
+          <view class="tagBox" wx:for="{{pageitem.label}}" wx:for-item="tag">
             <view class="block"></view>
-            <view class="tag">tag</view>
+            <view class="tag">{{tag}}</view>
             <view class="block"></view>
           </view>
         </scroll-view>
@@ -72,7 +72,7 @@
     </view>
     <view class="lower">
       <scroll-view scroll-y="true">
-      <text>今天发生了一件大事</text>
+      <text>{{pageitem.detail}}</text>
       </scroll-view>
     </view>
   </view>

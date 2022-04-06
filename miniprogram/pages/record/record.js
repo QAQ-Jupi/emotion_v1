@@ -28,7 +28,7 @@ Page({
     daydata:[],
 
     monthList:{}, //存储显示出来的月份的全部日期
-
+    pageitem:'',
     showPopup: 0
 
   },
@@ -143,9 +143,55 @@ Page({
       'show.year': year
     })
   },
+  dayinit: function(){
 
+    var that=this
+    wx.showToast({
+      title: '加载中', 
+      icon: 'loading'
+    });
+      wx.cloud.callFunction({
+        name: 'getemo',
+        data: {
+          'openid': app.globalData.openid,
+        }
+      }).then(function(res) {
+        console.log("【调用函数getemo】", res)
+        that.setData({
+          emoList:res.result.emos.reverse(),
+        })
+        var todayemos=[]
+        for (let i = 0; i < that.data.emoList.length; i++) {
+          var time = new Date(that.data.emoList[i].time)
+          if(time.getFullYear()==that.data.chosen.year&&time.getMonth()+1==that.data.chosen.month&&time.getDate()==that.data.chosen.date)
+          {
+            var emo=that.data.emoList[i]
+            var hour= ""+time.getHours()
+            var minute= ""+time.getMinutes()
+            if(hour<10)
+            {
+              hour='0'+hour
+            }
+            if(minute<10)  minute='0'+minute
+            emo.hour=hour
+            emo.minute=minute
+            emo.src="../../images/expressions/"+emo.emotion+".png"
+            todayemos = todayemos.concat(emo)
+          }
+        }     
+        that.setData({
+          daydata:todayemos,
+        })
+        console.log(that.data.daydata)
+        wx.hideToast();
+      }).catch(function(err) {
+        console.log(err)
+        wx.hideToast();
+      })
+    // console.log(this.data.chosen)
+  },
   //点击选择日期，将点击日期赋值到data里
-  dayChosen: function(e) {
+  dayChosen: async function(e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
     // console.log(index);
@@ -176,7 +222,18 @@ Page({
           var time = new Date(that.data.emoList[i].time)
           if(time.getFullYear()==that.data.chosen.year&&time.getMonth()+1==that.data.chosen.month&&time.getDate()==that.data.chosen.date)
           {
-            todayemos = todayemos.concat(that.data.emoList[i])
+            var emo=that.data.emoList[i]
+            var hour= ""+time.getHours()
+            var minute= ""+time.getMinutes()
+            if(hour<10)
+            {
+              hour='0'+hour
+            }
+            if(minute<10)  minute='0'+minute
+            emo.hour=hour
+            emo.minute=minute
+            emo.src="../../images/expressions/"+emo.emotion+".png"
+            todayemos = todayemos.concat(emo)
           }
         }     
         that.setData({
@@ -192,11 +249,17 @@ Page({
   },
 
   //展开详情页
-  showDetails: function(){
+  showDetails: function(e){
     this.setData({
       showPopup: 1
     })
-    // console.log("123")
+    var pageitem1=e.currentTarget.dataset.item
+    console.log(pageitem1)
+    if(pageitem1.imgPath!="") pageitem1.src=pageitem1.imgPath
+    else pageitem1.src="../../images/expressions/"+pageitem1.emotion+".png"
+    this.setData({
+      pageitem:pageitem1
+    })
   },
 
   //关闭详情页
@@ -219,8 +282,8 @@ Page({
       'show.month': date.monthDay,
       'show.year': date.yearDay
     })
-
     console.log(this.data)
+    this.dayinit()
   },
 
   /**
@@ -234,7 +297,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

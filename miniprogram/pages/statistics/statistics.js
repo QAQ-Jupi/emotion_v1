@@ -186,6 +186,62 @@ function setMonthOption(chart,MonthTime,MonthPosi,MonthNege,MonthNetu) {
 
   chart.setOption(option);
 }
+function setYearOption(chart,YearTime,YearPosi,YearNege,YearNetu) {
+  var option = {
+    title: {
+      text: '近一年每个月的情绪波动',
+      left: 'center'
+    },
+    legend: {
+      data: ['积极', '中性', '消极'],
+      top: 50,
+      left: 'center',
+      backgroundColor: 'white',
+      z: 100
+    },
+    grid: {
+      containLabel: true
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: YearTime,
+      // show: false
+    },
+    yAxis: {
+      x: 'center',
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+      // show: false
+    },
+    series: [{
+      name: '积极',
+      type: 'line',
+      smooth: true,
+      data:YearPosi
+    }, {
+      name: '中性',
+      type: 'line',
+      smooth: true,
+      data:YearNetu
+    }, {
+      name: '消极',
+      type: 'line',
+      smooth: true,
+      data: YearNege
+    }]
+  };
+
+  chart.setOption(option);
+}
 var util = require('../../utils/util.js');
 const app = getApp()
 const db = wx.cloud.database()
@@ -232,6 +288,10 @@ Page({
     MonthNetu:[],
     MonthNege:[],
     MonthPosi:[],
+    Yeartime:[],
+    YearNetu:[],
+    YearNege:[],
+    YearPosi:[],
   },
   dayMode:function(){
     this.setData({
@@ -398,6 +458,86 @@ Page({
     this.setData({
       isDisposed: true
     });
+
+    var that=this
+    var timestamp = Date.parse(new Date());
+    timestamp=timestamp/1000
+
+    var  Yeartime=[] 
+    var  YearNetu=[]
+    var  YearNege=[]
+    var  YearPosi=[]
+    var dayPosi=0
+    var dayNege=0
+    var dayNetu=0
+    var lastM=0
+    for(let day=365; day>=0; day--){
+      var netimestamp=timestamp - 24 * 60 * 60*day;
+      netimestamp=netimestamp*1000
+      var date = new Date(netimestamp);
+      //获取年份  
+      var Y =date.getFullYear();
+      //获取月份  
+      var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+      var daytime=Y+"-"+M
+      dayPosi=0
+      dayNege=0
+      dayNetu=0
+      if(M!=lastM){
+        lastM=M
+        for (let i = 0; i < that.data.emoList.length; i++) {
+          var time = new Date(that.data.emoList[i].time)
+          if(time.getFullYear()==Y&&time.getMonth()+1==M)
+          {
+            if(that.data.emoList[i].emotion=="negative")
+            {
+              dayNege=dayNege+1
+            }
+            else if(that.data.emoList[i].emotion=="positive")
+            {
+              dayPosi=dayPosi+1
+            }
+            else{
+              dayNetu=dayNetu+1
+            }
+          }
+        }
+          Yeartime = Yeartime.concat(daytime)
+          YearNetu = YearNetu.concat(dayNetu)
+          YearNege = YearNege.concat(dayNege)
+          YearPosi = YearPosi.concat(dayPosi)
+      }
+    }
+    this.setData({
+      Yeartime:  Yeartime,
+      YearNetu: YearNetu,
+      YearNege: YearNege,
+      YearPosi: YearPosi,
+    })
+    console.log(this.data.Yeartime)
+    this.ecComponent.init((canvas, width, height, dpr) => {
+      // 获取组件的 canvas、width、height 后的回调函数
+      // 在这里初始化图表
+      const chart = echarts.init(canvas, null, {
+        width: width,
+        height: height,
+        devicePixelRatio: dpr // new
+      });
+      setYearOption(chart,this.data. Yeartime,this.data. YearPosi,this.data. YearNege,this.data. YearNetu);
+
+      // 将图表实例绑定到 this 上，可以在其他成员函数（如 dispose）中访问
+      this.chart = chart;
+
+      this.setData({
+        isLoaded: true,
+        isDisposed: false
+      });
+
+
+      // 注意这里一定要返回 chart 实例，否则会影响事件处理等
+      return chart;
+    });
+
   },
   weekMode: function(){
     this.setData({
@@ -478,6 +618,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    this.ecComponent = this.selectComponent('#mychart-dom-bar');
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     var that=this
     wx.showToast({
       title: '加载中', 
@@ -489,6 +643,7 @@ Page({
           'openid': app.globalData.openid,
         }
       }).then(function(res) {
+        that.dayMode()
         console.log("【调用函数getemo】", res)
         that.setData({
           emoList:res.result.emos.reverse(),
@@ -523,21 +678,6 @@ Page({
         console.log(err)
         wx.hideToast();
       })
-      that.dayMode()
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    this.ecComponent = this.selectComponent('#mychart-dom-bar');
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**
