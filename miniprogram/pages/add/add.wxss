@@ -376,7 +376,7 @@
 }
 
 .boxForCamera{
-  /* display: flex; */
+  display: flex;
   position: absolute;
   
   width: 100%;
@@ -384,6 +384,8 @@
 
   top:8%;
   background-color: #fff;
+  justify-content: center;
+  align-items: center;
 }
 
 .center5{
