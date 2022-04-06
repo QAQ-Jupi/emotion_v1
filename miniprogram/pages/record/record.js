@@ -10,25 +10,30 @@ Page({
   data: {
     weekList:{
       E:["SUM", "MON", "TUE", "WED", "THUR", "FRI", "SAT"]
-    },
+    }, //存储缩写
 
     chosen:{
       date: '',
       month: '',
       year: ''
-    },
+    }, //被选中的日期
 
     show:{
       month: '',
       year: ''
-    },
+    }, //顶部显示的年月
 
-    monthList:{},
+
     emoList:[],
-    daydata:[]
+    daydata:[],
+
+    monthList:{}, //存储显示出来的月份的全部日期
+
+    showPopup: 0
 
   },
 
+  //计算一个月的最大天数
   dayMax:function(year, month) {
     var maxDay = 31;
     if(year%4==0 && month==2)
@@ -69,6 +74,7 @@ Page({
       var weekDay = weekDate.getDay(); //该月一号是周几   
     }
 
+    //存储日期
     var monthList=[];
     for(var i=1;i<=dayMax_day;i++){
       monthList.push({
@@ -92,6 +98,7 @@ Page({
     };
   },
 
+  //点击上个月
   front: function () {
     var year = this.data.show.year;
     var month = this.data.show.month;
@@ -114,6 +121,7 @@ Page({
     })
   },
 
+  //点击下个月
   next: function () {
     var year = this.data.show.year;
     var month = this.data.show.month;
@@ -136,6 +144,7 @@ Page({
     })
   },
 
+  //点击选择日期，将点击日期赋值到data里
   dayChosen: function(e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
@@ -182,6 +191,20 @@ Page({
     // console.log(this.data.chosen)
   },
 
+  //展开详情页
+  showDetails: function(){
+    this.setData({
+      showPopup: 1
+    })
+    // console.log("123")
+  },
+
+  //关闭详情页
+  back: function(){
+    this.setData({
+      showPopup: 0
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -196,8 +219,8 @@ Page({
       'show.month': date.monthDay,
       'show.year': date.yearDay
     })
-    
-    // console.log(this.data)
+
+    console.log(this.data)
   },
 
   /**

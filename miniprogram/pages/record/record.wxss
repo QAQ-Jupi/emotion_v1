@@ -246,3 +246,172 @@ page{
 .describe{
   margin-top: 5rpx;
 }
+
+.popupBoxBG{
+  position: absolute;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.popupBox{
+  position: absolute;
+  display: flex;
+
+  width: 80%;
+  height: 70%;
+
+  background-color: #c8edff;
+  border-radius: 30rpx;
+}
+
+.upper{
+  position: absolute;
+  display: flex;
+
+  width: 97%;
+  height: 10%;
+
+  top: 0;
+  left: 3%;
+
+  /* background-color: rgb(255, 255, 255); */
+  align-items: center;
+}
+
+.upper image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.center{
+  position: absolute;
+
+  width: 100%;
+  height: 30%;
+
+  top: 10%;
+
+  /* background-color: #c8edff; */
+}
+
+.emotionAndTime{
+  position: absolute;
+  display: flex;
+
+  width: 90%;
+  height: 60%;
+  top: 0%;
+  left: 5%;
+
+  /* background-color: #fff; */
+}
+
+.left_1{
+  display: flex;
+  width: 30%;
+  height: 100%;
+  /* background-color: rgb(129, 55, 55); */
+  justify-content: center;
+  align-items: center;
+}
+
+.left_1 image{
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.right_1{
+  display: flex;
+  width: 70%;
+  height: 100%;
+  /* background-color: rgb(129, 55, 55); */
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.tagBar{
+  position: absolute;
+
+  width: 90%;
+  height: 30%;
+  top: 65%;
+  left: 5%;
+
+  /* background-color: rgb(139, 60, 60); */
+
+}
+
+.tagBar scroll-view{
+  position: absolute;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  /* background-color: rgb(116, 116, 116); */
+}
+
+.tagBox{
+  display: inline-block;
+  
+  height: 100%;
+  width: 20%;
+
+  /* background-color: #fff; */
+
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+
+.block{
+  display: flex;
+  width: 100%;
+  height: 20%;
+
+  /* background-color: rgb(158, 91, 91); */
+}
+.tag{
+  /* position: absolute; */
+  display: flex;
+
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+
+  border: solid 3rpx #00AAFF;
+  border-radius: 20rpx;
+  color: #00AAFF;
+}
+
+.lower{
+  position: absolute;
+
+  width: 100%;
+  height: 60%;
+
+  top: 40%;
+
+  background-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+}
+
+.lower scroll-view{
+  position: absolute;
+
+  width: 90%;
+  height: 92%;
+
+  top: 3%;
+  left: 5%;
+
+  background-color: #fff;
+  white-space: nowrap;
+}
