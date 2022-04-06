@@ -255,8 +255,7 @@ Page({
     })
     var pageitem1=e.currentTarget.dataset.item
     console.log(pageitem1)
-    if(pageitem1.imgPath!="") pageitem1.src=pageitem1.imgPath
-    else pageitem1.src="../../images/expressions/"+pageitem1.emotion+".png"
+    pageitem1.src="../../images/expressions/"+pageitem1.emotion+".png"
     this.setData({
       pageitem:pageitem1
     })
@@ -283,7 +282,7 @@ Page({
       'show.year': date.yearDay
     })
     console.log(this.data)
-    this.dayinit()
+   
   },
 
   /**
@@ -297,6 +296,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.dayinit()
   },
 
   /**

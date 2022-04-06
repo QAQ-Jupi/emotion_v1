@@ -3,7 +3,7 @@
    <view class="topTitle">手动操作</view> 
   </view>
   <view class="topButton {{mode==1?'bechosen':''}}" bindtap="realtimeMode">
-    <view class="topTitle">实时扫描</view>
+    <view class="topTitle">自动识别</view>
   </view>
 </view>
 
