@@ -27,19 +27,23 @@
 
 <view class="bottom">
   <scroll-view scroll-y="true">
-    <view class="recordBox" bindtap="showDetails" data-item="{{item}}" wx:for="{{daydata}}" wx:for-item="item">
-      <view class="left">
-        <image src="{{item.src}}"></image>
-      </view>
-      <view class="right">
-        <view>
-          <view class="littleDate">{{chosen.year}}-{{chosen.month}}-{{chosen.date}}</view>
-          <view class="time">{{item.hour}}:{{item.minute}}</view>
-          <view class="describe">{{item.detail}}</view>
+  <block wx:if="{{daydata.length>0}}">
+    <view class="recordBox" bindtap="showDetails" wx:for="{{daydata}}" data-item="{{item}}"  wx:for-item="item">
+        <view class="left">
+            <image src="{{item.src}}"></image>
         </view>
-      </view>
+        <view class="right">
+            <view>
+            <view class="littleDate">{{chosen.year}}-{{chosen.month}}-{{chosen.date}}</view>
+            <view class="time">{{item.hour}}:{{item.minute}}</view>
+            <view class="describe">{{item.detail}}</view>
+            </view>
+        </view>
     </view>
+  </block>
+  <block wx:else>
     <view class='bott'>{{bottomtext}}</view>
+  </block>
   </scroll-view>
 </view>
 

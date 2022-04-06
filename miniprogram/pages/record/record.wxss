@@ -433,9 +433,9 @@ page{
 .bott{
 	width: 100%;
 	color: rgba(80, 80, 80, 1);
-	font-size: 24rpx;
+	font-size: 36rpx;
 	line-height: 150%;
 	text-align: center;
-    margin-top:30rpx ;
-    margin-bottom:30rpx ;
+    margin-top:150rpx ;
+    margin-bottom:100rpx ;
  }
