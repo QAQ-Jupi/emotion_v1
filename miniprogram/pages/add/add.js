@@ -40,7 +40,7 @@ Page({
     selectFeeling:[], //存储被选中的标签
 
     nowemotion: "unknown",
-    nowemoshow : '请点击测一测你当前的情绪哦！',
+    nowemoshow : '请点击上方测一测你当前的情绪哦！',
     nowtime: "",
     nowpic:"../../images/chooseImage3.png",
     nowdetail:'',

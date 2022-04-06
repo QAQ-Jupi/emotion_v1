@@ -57,12 +57,9 @@
 .center1{
   display: flex;
   position: absolute;
-  
   width: 100%;
-  height: 42%;
-
+  height: 480rpx;
   top:8%;
-
 }
 
 .neutral{
