@@ -423,6 +423,7 @@ page{
 }
 .text_show{
   text-indent:2em;
+  font-size: 36rpx;
   display: block;
   margin:5rpx ;
   word-wrap: break-word;
