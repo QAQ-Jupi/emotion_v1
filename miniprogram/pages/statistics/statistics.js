@@ -116,7 +116,7 @@ function setweekOption(chart,weekTime,weekNum,weekPosi,weekNege) {
         label: {
           normal: {
             show: true,
-            position: 'left'
+            position: 'inside'
           }
         },
         data: weekNege,
