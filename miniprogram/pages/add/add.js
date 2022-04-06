@@ -12,6 +12,7 @@ Page({
     emotionNum: 1, //0为positive，1为neutral，2为negative
     emotionText: 'neutral', //默认为neutral
     emotionPic: '/images/expressions/neutral.png', //默认为neutral
+    emoshow:'中性',
 
     date: '添加日期', //显示选择的日期，默认初始值是“添加日期”
     time: '添加时间', //显示选择的时间，默认初始值是“添加时间”
@@ -39,6 +40,7 @@ Page({
     selectFeeling:[], //存储被选中的标签
 
     nowemotion: "unknown",
+    nowemoshow : '请点击测一测你当前的情绪哦！',
     nowtime: "",
     nowpic:"../../images/chooseImage3.png",
     nowdetail:'',
@@ -85,7 +87,7 @@ chooseImage: function () {
               console.log(result)
               var emotion = result.emotion
               wx.hideLoading()
-              if (emotion == 'unknown') {
+              if (emotion == 'unknown'||emotion=='') {
                 wx.showModal({
                   title: '无法识别',
                   content: '很抱歉，该图片无法识别，请选择其他图片。',
@@ -102,6 +104,17 @@ chooseImage: function () {
                   nowemotion : emotion,
                   nowpic : tempFilePaths
                 })
+                if(emotion=='positive') 
+                  _this.setData({
+                    nowemoshow : '积极',
+                  })
+                else if(emotion=='negative')
+                  _this.setData({
+                    nowemoshow : '消极',
+                  }) 
+                else _this.setData({
+                  nowemoshow : '中性',
+                }) 
                 console.log("可以了!"+_this.data.nowemotion)
               }
             },
@@ -171,18 +184,22 @@ chooseImage: function () {
     var Etext = '';
     var EPic = '';
     var ELabels = '';
+    var emoshow = '';
     if(this.data.emotionNum==0){
       Etext = 'positive';
+      emoshow = '积极'
       EPic = '/images/expressions/positive.png';
       ELabels = JSON.parse(JSON.stringify(this.data.positive)); //深拷贝
     }
     else if(this.data.emotionNum==1){
       Etext = 'neutral';
+      emoshow = '中性'
       EPic = '/images/expressions/neutral.png';
       ELabels = JSON.parse(JSON.stringify(this.data.neutral)); //深拷贝
     }
     else{
       Etext = 'negative';
+      emoshow = '消极'
       EPic = '/images/expressions/negative.png';
       ELabels = JSON.parse(JSON.stringify(this.data.negative)); //深拷贝
     }
@@ -190,6 +207,7 @@ chooseImage: function () {
     this.setData({
       emotionText: Etext,
       emotionPic: EPic,
+      emoshow:emoshow,
       showFeeling: ELabels,
       selectFeeling: []
       
@@ -287,7 +305,8 @@ chooseImage: function () {
       that.realtimeMode()
       that.setData({
         nowpic:"../../images/chooseImage3.png",
-        nowemotion:"unknown"
+        nowemotion: "unknown",
+        nowemoshow : '请点击测一测你当前的情绪哦！',
       })
     }
   },
@@ -321,6 +340,7 @@ chooseImage: function () {
               title: '保存成功',
             })
             console.log("【调用函数uploademo】【保存成功】", res)
+            that.toagain()
           }).catch(function(err) {
             console.log(err)
             wx.showToast({
@@ -357,6 +377,7 @@ chooseImage: function () {
             title: '保存成功',
           })
           console.log("【调用函数uploademo】【保存成功】", res)
+          that.toagain()
         }).catch(function(err) {
           console.log(err)
           wx.showToast({
@@ -371,7 +392,6 @@ chooseImage: function () {
       }
       
     }
-    this.toagain()
   }, 
 //点击获取当前点击时间
   getTime: function () {
