@@ -85,7 +85,7 @@ chooseImage: function () {
               console.log(result)
               var emotion = result.emotion
               wx.hideLoading()
-              if (emotion == 'unknown') {
+              if (emotion == 'unknown'||emotion=='') {
                 wx.showModal({
                   title: '无法识别',
                   content: '很抱歉，该图片无法识别，请选择其他图片。',
@@ -321,6 +321,7 @@ chooseImage: function () {
               title: '保存成功',
             })
             console.log("【调用函数uploademo】【保存成功】", res)
+            this.toagain()
           }).catch(function(err) {
             console.log(err)
             wx.showToast({
@@ -357,6 +358,7 @@ chooseImage: function () {
             title: '保存成功',
           })
           console.log("【调用函数uploademo】【保存成功】", res)
+          this.toagain()
         }).catch(function(err) {
           console.log(err)
           wx.showToast({
@@ -371,7 +373,6 @@ chooseImage: function () {
       }
       
     }
-    this.toagain()
   }, 
 //点击获取当前点击时间
   getTime: function () {
