@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    bottomtext:"---到底啦---",
     weekList:{
       E:["SUM", "MON", "TUE", "WED", "THUR", "FRI", "SAT"]
     }, //存储缩写

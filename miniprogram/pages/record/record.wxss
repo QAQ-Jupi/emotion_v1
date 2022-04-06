@@ -244,15 +244,13 @@ page{
 }
 
 .describe{
+  width: 430rpx;
   margin-top: 5rpx;
-  margin-right: 1%;
-  overflow: hidden;
   word-break: break-all;
+  overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
 	-webkit-box-orient: vertical;
-  -webkit-line-clamp: 1; 
-  word-wrap:break-word
+	-webkit-line-clamp: 1; 
 }
 
 .popupBoxBG{
@@ -424,6 +422,19 @@ page{
   white-space: nowrap;
 }
 .text_show{
-  margin-right: 50%;
-  word-wrap:break-word
+  text-indent:2em;
+  display: block;
+  margin:5rpx ;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }
+.bott{
+	width: 100%;
+	color: rgba(80, 80, 80, 1);
+	font-size: 24rpx;
+	line-height: 150%;
+	text-align: center;
+    margin-top:30rpx ;
+    margin-bottom:30rpx ;
+ }

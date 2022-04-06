@@ -39,6 +39,7 @@
         </view>
       </view>
     </view>
+    <view class='bott'>{{bottomtext}}</view>
   </scroll-view>
 </view>
 
@@ -72,7 +73,8 @@
     </view>
     <view class="lower">
       <scroll-view scroll-y="true">
-      <text class="text_show">{{pageitem.detail}}</text>
+      <view class="text_show"><text>{{pageitem.detail}}</text></view>
+      
       </scroll-view>
     </view>
   </view>
