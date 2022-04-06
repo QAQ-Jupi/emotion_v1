@@ -3,7 +3,6 @@
   "usingComponents": {
     "decode": "/towxml/decode",
     "audio-player": "/towxml/audio-player/audio-player",
-    "echarts": "/towxml/echarts/echarts",
     "latex": "/towxml/latex/latex",
     "table": "/towxml/table/table",
     "todogroup": "/towxml/todogroup/todogroup",

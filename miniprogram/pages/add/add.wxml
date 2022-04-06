@@ -55,7 +55,7 @@
 
 <view class="center_2 {{mode==1?'':'modeChange'}}" >
   <view class="boxForCamera" bindtap='chooseImage'>
-    <image src="{{nowpic}}" style="width: 60%; height: 100%;"></image>
+    <image src="{{nowpic}}" style="height: 100%;" mode="heightFix"></image>
   </view>
 
 
