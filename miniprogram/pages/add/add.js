@@ -1,5 +1,5 @@
 // pages/add/add.js
-
+const format=require("../../utils/util.js");
 var util = require('../../utils/util.js');
 const app = getApp()
 Page({
@@ -326,6 +326,8 @@ chooseImage: function () {
     else{
       console.log("这是mode等于0")
       console.log(that.data.date)
+      var date=that.data.date+" "+that.data.time
+      // var date = format.formatTime(date ,'Y/M/D h:m:s');
       if(that.data.date!="添加日期" && that.data.time!="添加时间"){
         wx.cloud.callFunction({
           name: 'uploademo',
@@ -333,7 +335,7 @@ chooseImage: function () {
             'userOpenid': app.globalData.openid,
             'imgPath': '',
             'emotion': that.data.emotionText,
-            'time': that.data.date+" "+that.data.time,
+            'time': date,
             'label' : that.data.selectFeeling,
             'detail': that.data.nowdetail,
             'mode' : that.data.mode

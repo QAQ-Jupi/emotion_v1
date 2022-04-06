@@ -3,21 +3,25 @@
 <view class="times">
   <view class="box">
     <view class="title">累计记录</view>
-    <view class="num">102次</view>
+    <view class="num">{{total}}</view>
   </view>
   <view class="box">
     <view class="title">今日记录</view>
-    <view class="num">102次</view>
+    <view class="num">{{daytotal}}</view>
   </view>
 </view>
 
 <view class="chart">
   <view class="bar">
-    <view class="leftRadius">日</view>
-    <view class="borderAll">周</view>
-    <view class="borderAll">月</view>
-    <view class="rightRadius borderAll">年</view>
+    <view class="leftRadius {{mode==0?'bechosen':''}}" bindtap="dayMode">日</view>
+    <view class="borderAll {{mode==1?'bechosen':''}}" bindtap="weekMode">周</view>
+    <view class="borderAll {{mode==2?'bechosen':''}}" bindtap="MonthMode">月</view>
+    <view class="rightRadius borderAll {{mode==3?'bechosen':''}}" bindtap="YearMode">年</view>
   </view>
-  <view class="time">2018-12-23</view>
+  <view class="Echart">
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}{{mode}}"></ec-canvas>
+  </view>
+
+  <view class="time">{{date}}</view>
   <view></view>
 </view>

@@ -17,10 +17,7 @@
     <view class="day {{((index+1)==chosen.date && monthList[index].monthDay==chosen.month && monthList[index].yearDay==chosen.year)?'BeChosen':''}}" wx:for="{{monthList}}" wx:for-index="index" data-index='{{index}}' bindtap="dayChosen">
       <view class="week">{{monthList[index].week}}</view>
       <view class="date">{{monthList[index].day}}</view>
-      <view class="pointBox">
-        <view class="{{((index+1)==chosen.date && monthList[index].monthDay==chosen.month && monthList[index].yearDay==chosen.year)?'point0':'point1'}}" wx:if="{{(index+1)==today.nowDate && monthList[index].monthDay==today.nowMonth && monthList[index].yearDay==today.nowYear}}"></view>
-        <view class="point2" wx:else></view>
-      </view>
+      
     </view>
   </scroll-view>
 </view>

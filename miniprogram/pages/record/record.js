@@ -1,4 +1,7 @@
 // pages/record/record.js
+var util = require('../../utils/util.js');
+const app = getApp()
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -20,8 +23,9 @@ Page({
       year: ''
     },
 
-    monthList:{}
-
+    monthList:{},
+    emoList:[],
+    daydata:[]
 
   },
 
@@ -143,6 +147,38 @@ Page({
       'chosen.month': this.data.monthList[index].monthDay,
       'chosen.year': this.data.monthList[index].yearDay,
     })
+    var that=this
+    wx.showToast({
+      title: '加载中', 
+      icon: 'loading'
+    });
+      wx.cloud.callFunction({
+        name: 'getemo',
+        data: {
+          'openid': app.globalData.openid,
+        }
+      }).then(function(res) {
+        console.log("【调用函数getemo】", res)
+        that.setData({
+          emoList:res.result.emos.reverse(),
+        })
+        var todayemos=[]
+        for (let i = 0; i < that.data.emoList.length; i++) {
+          var time = new Date(that.data.emoList[i].time)
+          if(time.getFullYear()==that.data.chosen.year&&time.getMonth()+1==that.data.chosen.month&&time.getDate()==that.data.chosen.date)
+          {
+            todayemos = todayemos.concat(that.data.emoList[i])
+          }
+        }     
+        that.setData({
+          daydata:todayemos,
+        })
+        console.log(that.data.daydata)
+        wx.hideToast();
+      }).catch(function(err) {
+        console.log(err)
+        wx.hideToast();
+      })
     // console.log(this.data.chosen)
   },
 
@@ -160,6 +196,7 @@ Page({
       'show.month': date.monthDay,
       'show.year': date.yearDay
     })
+    
     // console.log(this.data)
   },
 
