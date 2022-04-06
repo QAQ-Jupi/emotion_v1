@@ -13,7 +13,7 @@
       <image src="/images/icons/front.png"></image>
     </view>
     <view class="expressions">
-      <view>{{emotionText}}</view>
+      <view>{{emoshow}}</view>
       <image src="{{emotionPic}}"></image>
     </view>
     <view class="next" bindtap="changeClick" data-index="1">
@@ -61,7 +61,7 @@
 
   <view class="center5">
     <view class="listText_2">情绪：</view>
-    <view class="contain_2" >{{nowemotion}}</view>
+    <view class="contain_2" >{{nowemoshow}}</view>
     <view class="divLine"></view>
   </view>
 
