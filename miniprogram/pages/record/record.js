@@ -180,6 +180,9 @@ Page({
             todayemos = todayemos.concat(emo)
           }
         }     
+        todayemos.sort(function(a, b) {
+          return b.time < a.time ? 1 : -1
+        })
         that.setData({
           daydata:todayemos,
         })
@@ -237,9 +240,13 @@ Page({
             todayemos = todayemos.concat(emo)
           }
         }     
+        todayemos.sort(function(a, b) {
+          return b.time < a.time ? 1 : -1
+        })
         that.setData({
           daydata:todayemos,
         })
+        
         console.log(that.data.daydata)
         wx.hideToast();
       }).catch(function(err) {
