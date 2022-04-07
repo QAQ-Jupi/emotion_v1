@@ -14,15 +14,41 @@ function setDayOption(chart,dayPosi,dayNege,dayNetu) {
       type: 'pie',
       center: ['50%', '50%'],
       radius: ['20%', '40%'],
+      itemStyle: {
+        normal: {
+          label: {
+            show: true,
+            //position: 'inner',
+            formatter: function(params) {
+              return params.name+' '+(params.percent - 0).toFixed(0) + '%'
+            }
+          },
+          labelLine: {
+            show: true
+          }
+        },
+        emphasis: {
+          label: {
+            show: true,
+            formatter: "{b}\n{d}%"
+          }
+        }
+      },
       data: [{
         value: dayNege,
-        name: '消极'
+        name: '消极',
+        labelLine:{show: dayNege== 0 ? false : true},
+        label:{show: dayNege== 0 ? false : true},
       }, {
         value: dayPosi,
-        name: '积极'
+        name: '积极',
+        labelLine:{show: dayPosi== 0 ? false : true},
+        label:{show: dayPosi== 0 ? false : true},
       }, {
         value: dayNetu,
-        name: '中性'
+        name: '中性',
+        labelLine:{show: dayNetu== 0 ? false : true},
+        label:{show: dayNetu== 0 ? false : true},
       }, ]
     }]
   };
@@ -83,7 +109,14 @@ function setweekOption(chart,weekTime,weekNum,weekPosi,weekNege) {
         label: {
           normal: {
             show: true,
-            position: 'inside'
+            position: 'inside',
+            formatter: function (params) {
+                if (params.value > 0) {
+                  return params.value;
+                } else {
+                  return '';
+                }
+              },
           }
         },
         data: weekNum,
@@ -99,7 +132,14 @@ function setweekOption(chart,weekTime,weekNum,weekPosi,weekNege) {
         stack: '总量',
         label: {
           normal: {
-            show: true
+            show: true,
+            formatter: function (params) {
+                if (params.value > 0) {
+                  return params.value;
+                } else {
+                  return '';
+                }
+              },
           }
         },
         data: weekPosi,
@@ -116,7 +156,14 @@ function setweekOption(chart,weekTime,weekNum,weekPosi,weekNege) {
         label: {
           normal: {
             show: true,
-            position: 'inside'
+            position: 'inside',
+            formatter: function (params) {
+                if (params.value > 0) {
+                  return params.value;
+                } else {
+                  return '';
+                }
+              },
           }
         },
         data: weekNege,
@@ -618,20 +665,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    this.ecComponent = this.selectComponent('#mychart-dom-bar');
+    this.loadData()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.ecComponent = this.selectComponent('#mychart-dom-bar');
+    
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+
+  loadData: function () {
     var that=this
     wx.showToast({
       title: '加载中', 
@@ -678,6 +724,14 @@ Page({
         console.log(err)
         wx.hideToast();
       })
+  },
+
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.loadData()
   },
 
   /**
